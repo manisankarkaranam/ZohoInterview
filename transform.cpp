@@ -21,20 +21,36 @@ vector<unsigned int> transformSequence(vector<unsigned int> seq, int n) {
 	return result;
 }
 
+vector<unsigned int> convertTranformed(vector<unsigned int> seq, int n) {
+
+	unsigned int setnBits = (uint32_t)(((uint64_t)1 << n) - 1), temp;
+	int countPerByte = (32 / n);
+	vector<unsigned int> result;
+	for (int i = 0; i < seq.size(); i++) {
+		for (int j = 0; j < countPerByte; j++) {
+			result.push_back(seq[i] | setnBits);
+			seq[i] = seq[i] >> n;
+		}
+	}
+	return result;
+}
+
 int main()
 {
 	unsigned int seqSize = 100, n, temp;
 	vector<unsigned int> sequence;
-	
-	cout << "Enter n..  "; 
+
+	cout << "Enter n..  ";
 	cin >> n;
-	
+
 	cout << "Enter sequence of unsgined 32bit integers.." << endl;
-	for (int i = 0; i < seqSize; i++){
+	for (int i = 0; i < seqSize; i++) {
 		cin >> temp;
 		sequence.push_back(temp);
 	}
 
-	vector<unsigned int> result = transformSequence(sequence, n);
+	vector<unsigned int> tranformed = transformSequence(sequence, n);
+	vector<unsigned int> OrgKindOf = convertTranformed(tranformed, n);
+
 	return 0;
 }
