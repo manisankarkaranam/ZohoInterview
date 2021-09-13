@@ -1,3 +1,6 @@
+// Solution to problem 3 and 4
+
+
 #include<iostream>
 #include<vector>
 
