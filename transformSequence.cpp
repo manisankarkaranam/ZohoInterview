@@ -23,10 +23,17 @@ vector<unsigned int> transformSequence(vector<unsigned int> seq, int n) {
 
 int main()
 {
-	int seqSize = 100, n = 3;
+	unsigned int seqSize = 100, n, temp;
 	vector<unsigned int> sequence;
-	for (int i = 0; i < seqSize; i++)
-		sequence.push_back(i + 1);
+	
+	cout << "Enter n..  "; 
+	cin >> n;
+	
+	cout << "Enter sequence of unsgined 32bit integers.." << endl;
+	for (int i = 0; i < seqSize; i++){
+		cin >> temp;
+		sequence.push_back(temp);
+	}
 
 	vector<unsigned int> result = transformSequence(sequence, n);
 	return 0;
